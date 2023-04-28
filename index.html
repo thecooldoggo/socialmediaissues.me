@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <!--Will Mehler 2023-->
-<!--Fix scroll issue and add email list and change.org link-->
+<!--Fix scroll bar issue and add email list-->
 <html>
 <head>
 	<title>Social Media Issues</title>
+	<link rel="shortcut icon" href="/assets/images/favicon.png" type="image/png">
 	<style>
 		body {
 			background-color: black;
@@ -71,6 +72,31 @@
 				opacity: 1;
 			}
 		}
+
+		.button-container {
+			opacity: 0;
+			animation: fadeIn 1s ease-in-out forwards;
+			position: relative; /* add position and z-index to fix overlapping issue */
+			z-index: 1;
+		}
+
+		.button-container .button {
+			background-color: white;
+			color: black;
+			padding: 8px;
+			margin-right: 10px;
+			cursor: pointer;
+			border-radius: 5px;
+			text-decoration: none;
+			outline: 2px solid black;
+			transition: all 0.2s ease;
+		}
+
+		.button-container .button:hover {
+			background-color: black;
+			color: white;
+			outline: 2px solid white;
+		}
 	</style>
 </head>
 <body>
@@ -82,6 +108,11 @@
 	</div>
 	<div class="text-container hide">
 		<p>This is a serious problem. Here's how you can help.</p>
+		<div class="button-container">
+			<a href="https://www.google.com" class="button">Google</a>
+			<a href="https://chng.it/VyLDkTM6nX" class="button">Sign My Petition!</a>
+			<a href="https://www.canva.com" class="button">Canva</a>
+		</div>
 	</div>
 
 	<script>
@@ -99,6 +130,11 @@
 				setTimeout(function() {
 					text[1].classList.remove('hide');
 					text[1].classList.add('show');
+					window.removeEventListener('scroll', revealText);
+				}, 7000);
+				setTimeout(function() {
+					text[1].querySelector('.button-container').classList.remove('hide');
+					text[1].querySelector('.button-container').classList.add('show');
 					window.removeEventListener('scroll', revealText);
 				}, 7000);
 			}
