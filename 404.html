@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<!--Will Mehler 2023-->
+<html>
+<head>
+	<title>404 Error - Social Media Issues</title>
+	<link rel="shortcut icon" href="/assets/images/favicon.png" type="image/png">
+	<style>
+		body {
+			background-color: #202020;
+			color: white;
+			font-family: "Source Code Pro", monospace;
+			font-size: 36px;
+			text-align: center;
+			margin-top: 100px;
+			margin-bottom: 200vh;
+		}
+
+		.animate {
+			overflow: hidden;
+			border-right: 3px solid white;
+			display: inline-block;
+                        justify-content: center;
+			animation: typing 3s steps(20) forwards, blink-caret .75s step-end forwards;
+			margin-right: 10px;
+			letter-spacing: 1px;
+		}
+
+		@keyframes typing {
+			from {
+				width: 0;
+			}
+			to {
+				width: 22ch;
+			}
+		}
+
+		@keyframes blink-caret {
+			from, to {
+				border-color: transparent;
+			}
+			50% {
+				border-color: white;
+			}
+		}
+
+		.text-container {
+			opacity: 0;
+			margin-top: 70vh;
+			font-size: 25px;
+			line-height: 1.5;
+			padding: 20px;
+			animation: fadeIn 1s ease-in-out forwards;
+			position: relative;
+			z-index: 1;
+		}
+
+		.show {
+			opacity: 1;
+			margin-top: 0;
+		}
+
+		.hide {
+			display: none;
+		}
+
+		@keyframes fadeIn {
+			from {
+				opacity: 0;
+			}
+			to {
+				opacity: 1;
+			}
+		}
+
+		.button-container {
+			opacity: 0;
+			animation: fadeIn 1s ease-in-out forwards;
+			position: relative;
+			z-index: 1;
+		}
+
+		.button-container .button {
+			background-color: white;
+			color: #202020;
+			padding: 8px;
+			margin-right: 10px;
+			cursor: pointer;
+			border-radius: 5px;
+			text-decoration: none;
+			outline: 2px solid #202020;
+			transition: all 0.2s ease;
+		}
+
+		.button-container .button:hover {
+			background-color: #202020;
+			color: white;
+			outline: 2px solid white;
+		}
+	</style>
+</head>
+<body>
+	<div>
+		<span class="animate" style="font-size: 48px;">/404&nbsp;Error</span>
+	</div>
+	<div class="text-container hide">
+		<p>We can't seem to find the page you're looking for.</p>
+		<div class="button-container">
+			<a href="https://socialmediaissues.me" class="button">Go Back to Social Media Issues Homepage</a>
+		</div>
+	</div>
+
+	<script>
+		window.addEventListener('scroll', revealText);
+
+		function revealText() {
+			var text = document.querySelectorAll('.text-container');
+			var position = text[0].getBoundingClientRect().top;
+			var screenPosition = window.innerHeight / .1;
+
+			if (position < screenPosition) {
+				text[0].classList.remove('hide');
+				text[0].classList.add('show');
+				window.removeEventListener('scroll', revealText);
+				setTimeout(function() {
+					text[1].classList.remove('hide');
+					text[1].classList.add('show');
+					window.removeEventListener('scroll', revealText);
+				}, 7000);
+				setTimeout(function() {
+					text[1].querySelector('.button-container').classList.remove('hide');
+					text[1].querySelector('.button-container').classList.add('show');
+					window.removeEventListener('scroll', revealText);
+					document.querySelector('.animate').style.animation = "typing 3s steps(20) forwards, blink-caret .75s step-end forwards 3s";
+				}, 7000);
+			}
+		}
+	</script>
+</body>
+</html>
