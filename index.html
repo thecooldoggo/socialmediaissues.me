@@ -12,7 +12,7 @@
 			font-size: 36px;
 			text-align: center;
 			margin-top: 100px;
-			margin-bottom: 200vh;
+			margin-bottom: 100vh;
 		}
 
 		.animate {
@@ -96,11 +96,137 @@
 			color: white;
 			outline: 2px solid white;
 		}
+
+		/* Hamburger Menu */
+		.hamburger {
+			width: 28px;
+			height: 20px;
+			position: absolute;
+			top: 20px;
+			left: 20px;
+			cursor: pointer;
+			z-index: 2;
+		}
+
+		.hamburger span {
+			background-color: white;
+			border-radius: 2px;
+			position: absolute;
+			display: block;
+			width: 100%;
+			height: 3px;
+			transition: all 0.2s ease;
+		}
+
+		.hamburger span:nth-child(1) {
+			top: 0;
+		}
+
+		.hamburger span:nth-child(2) {
+			top: 8px;
+		}
+
+		.hamburger span:nth-child(3) {
+			top: 16px;
+		}
+
+		.menu {
+			position: fixed;
+			left: 0;
+			top: 0;
+			height: 100%;
+			width: 100%;
+			background-color: #333333;
+			opacity: 0;
+			visibility: hidden;
+			transition: opacity 0.3s ease;
+			filter: blur(1px);
+			overflow: hidden;
+			z-index: 1;
+		}
+		
+		.menu.show-menu {
+			opacity: 1;
+			visibility: visible;
+			filter: blur(0);
+			overflow: hidden;
+			z-index: 2;
+		}
+
+        .menu-items {
+            position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+        }
+
+        .menu-items .menu-item {
+			background-color: white;
+			color: #202020;
+			font-size: 25px;
+			padding: 6px;
+			margin-right: 5px;
+			cursor: pointer;
+			border-radius: 5px;
+			text-decoration: none;
+			outline: 2px solid #202020;
+			transition: all 0.2s ease;
+		}
+
+		.menu-items .menu-item:hover {
+			background-color: #202020;
+			color: white;
+			outline: 2px solid white;
+		}
+
+		.show-menu .hamburger span:nth-child(1) {
+			transform: rotate(45deg) translate(7px, 7px);
+		}
+
+		.show-menu .hamburger span:nth-child(2) {
+			opacity: 0;
+		}
+
+		.show-menu .hamburger span:nth-child(3) {
+			transform: rotate(-45deg) translate(7px, -7px);
+		}
+
+        .show-menu .hamburger span {
+            background-color: white;
+        }
+
+        .close-button {
+            position: absolute;
+            top: 6px;
+            left: 20px;
+            cursor: pointer;
+            font-size: 40px;
+            color: white;
+            z-index: 3;
+        }
+
+        .close-button:hover {
+            color: #cccccc;
+        }
+        
 	</style>
 </head>
 <body>
 	<div>
 		<span class="animate" style="font-size: 48px;">/Social&nbsp;Media&nbsp;Issues</span>
+	</div>
+	<div class="hamburger">
+		<span></span>
+		<span></span>
+		<span></span>
+	</div>
+	<div class="menu">
+        <div class="close-button">&#10006;</div>
+		<div class="menu-items">
+			<a href="https://socialmediaissues.me/real-life-expamples" class="menu-item">Real Life Examples</a>
+			<a href="https://socialmediaissues.me/sources" class="menu-item">Sources</a>
+			<a href="https://socialmediaissues.me/about" class="menu-item">About Me</a>
+		</div>
 	</div>
 	<div class="text-container hide">
 		<p>Social media is harming teen mental health. From curated content to the pressure to present a perfect image, it can be a toxic environment that is linked to increased anxiety, depression, and in extreme cases, suicide.</p>
@@ -138,6 +264,36 @@
 				}, 7000);
 			}
 		}
+
+		// Hamburger Menu
+		const hamburger = document.querySelector('.hamburger');
+		const menu = document.querySelector('.menu');
+		const closeButton = document.querySelector('.close-button');
+		let menuOpen = false;
+
+		hamburger.addEventListener('click', () => {
+			if (!menuOpen) {
+				menu.classList.add('show-menu');
+				menuOpen = true;
+                hamburger.children[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+                hamburger.children[1].style.opacity = 0;
+                hamburger.children[2].style.transform = 'rotate(-45deg) translate(5px, -5px)';
+			} else {
+				menu.classList.remove('show-menu');
+				menuOpen = false;
+                hamburger.children[0].style.transform = 'none';
+                hamburger.children[1].style.opacity = 1;
+                hamburger.children[2].style.transform = 'none';
+			}
+		});
+
+        closeButton.addEventListener('click', () => {
+            menu.classList.remove('show-menu');
+			menuOpen = false;
+            hamburger.children[0].style.transform = 'none';
+            hamburger.children[1].style.opacity = 1;
+            hamburger.children[2].style.transform = 'none';
+        });
 	</script>
 </body>
 </html>
