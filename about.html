@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<!--Will Mehler 2023-->
+<html>
+<head>
+	<title>About Me - Social Media Issues</title>
+	<link rel="shortcut icon" href="/assets/images/favicon.png" type="image/png">
+	<style>
+		body {
+			background-color: #202020;
+			color: white;
+			font-family: "Source Code Pro", monospace;
+			font-size: 36px;
+			text-align: center;
+			margin-top: 100px;
+			margin-bottom: 100vh;
+		}
+        
+        h1 {
+            font-size: 72px;
+            margin-bottom: 50px;
+        }
+
+        h2 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+            line-height: 1.5;
+        }
+
+        /* Fade in effect */
+        .fade-in {
+            opacity: 0;
+            animation: fadeIn 1.25s forwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+		/* Hamburger Menu */
+		.hamburger {
+			width: 28px;
+			height: 20px;
+			position: absolute;
+			top: 20px;
+			left: 20px;
+			cursor: pointer;
+			z-index: 2;
+		}
+
+		.hamburger span {
+			background-color: white;
+			border-radius: 2px;
+			position: absolute;
+			display: block;
+			width: 100%;
+			height: 3px;
+			transition: all 0.2s ease;
+		}
+
+		.hamburger span:nth-child(1) {
+			top: 0;
+		}
+
+		.hamburger span:nth-child(2) {
+			top: 8px;
+		}
+
+		.hamburger span:nth-child(3) {
+			top: 16px;
+		}
+
+		.menu {
+			position: fixed;
+			left: 0;
+			top: 0;
+			height: 100%;
+			width: 100%;
+			background-color: #333333;
+			opacity: 0;
+			visibility: hidden;
+			transition: opacity 0.3s ease;
+			filter: blur(1px);
+			overflow: hidden;
+			z-index: 1;
+		}
+		
+		.menu.show-menu {
+			opacity: 1;
+			visibility: visible;
+			filter: blur(0);
+			overflow: hidden;
+			z-index: 2;
+		}
+
+        .menu-items {
+            position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+        }
+
+        .menu-items .menu-item {
+			background-color: white;
+			color: #202020;
+			font-size: 25px;
+			padding: 6px;
+			margin-right: 5px;
+			cursor: pointer;
+			border-radius: 5px;
+			text-decoration: none;
+			outline: 2px solid #202020;
+			transition: all 0.2s ease;
+		}
+
+		.menu-items .menu-item:hover {
+			background-color: #202020;
+			color: white;
+			outline: 2px solid white;
+		}
+
+		.show-menu .hamburger span:nth-child(1) {
+			transform: rotate(45deg) translate(7px, 7px);
+		}
+
+		.show-menu .hamburger span:nth-child(2) {
+			opacity: 0;
+		}
+
+		.show-menu .hamburger span:nth-child(3) {
+			transform: rotate(-45deg) translate(7px, -7px);
+		}
+
+        .show-menu .hamburger span {
+            background-color: white;
+        }
+
+        .close-button {
+            position: absolute;
+            top: 6px;
+            left: 20px;
+            cursor: pointer;
+            font-size: 40px;
+            color: white;
+            z-index: 3;
+        }
+
+        .close-button:hover {
+            color: #cccccc;
+        }
+        
+	</style>
+</head>
+<body>
+	<div class="hamburger">
+		<span></span>
+		<span></span>
+		<span></span>
+	</div>
+	<div class="menu">
+        <div class="close-button">&#10006;</div>
+		<div class="menu-items">
+			<a href="https://socialmediaissues.me/real-life-expamples" class="menu-item">Real Life Examples</a>
+			<a href="https://socialmediaissues.me/sources" class="menu-item">Sources</a>
+			<a href="https://socialmediaissues.me" class="menu-item">Home</a>
+		</div>
+	</div>
+    <h1 class="fade-in">About Me</h1>
+	<div class="about-content fade-in">
+        <p>My name is Will Mehler, and I'm a middle school student passionate about raising awareness for the negative effects of social media on teen mental health. I created this website to share information, resources, and ways to get involved in the fight against social media's harmful impact.</p>
+        <h2>How can you get involved?</h2>
+        <p>There are many ways you can help raise awareness and make a difference. You can sign my petition, share this website with others, donate to mental health organizations, and most importantly, take care of your own mental health and encourage those around you to do the same!</p>
+    </div>
+
+	<script>
+		// Hamburger Menu
+		const hamburger = document.querySelector('.hamburger');
+		const menu = document.querySelector('.menu');
+		const closeButton = document.querySelector('.close-button');
+		let menuOpen = false;
+
+		hamburger.addEventListener('click', () => {
+			if (!menuOpen) {
+				menu.classList.add('show-menu');
+				menuOpen = true;
+                hamburger.children[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+                hamburger.children[1].style.opacity = 0;
+                hamburger.children[2].style.transform = 'rotate(-45deg) translate(5px, -5px)';
+			} else {
+				menu.classList.remove('show-menu');
+				menuOpen = false;
+                hamburger.children[0].style.transform = 'none';
+                hamburger.children[1].style.opacity = 1;
+                hamburger.children[2].style.transform = 'none';
+			}
+		});
+
+        closeButton.addEventListener('click', () => {
+            menu.classList.remove('show-menu');
+			menuOpen = false;
+            hamburger.children[0].style.transform = 'none';
+            hamburger.children[1].style.opacity = 1;
+            hamburger.children[2].style.transform = 'none';
+        });
+	</script>
+</body>
+</html>
