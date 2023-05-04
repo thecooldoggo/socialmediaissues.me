@@ -13,4 +13,5 @@ Disallow:
 Crawl-delay: 10
 Disallow: /cgi-bin/
 Disallow: /about/
+Disallow: /bob/
 Sitemap: https://socialmediaissues.me/sitemap.xml
