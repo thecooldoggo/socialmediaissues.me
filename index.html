@@ -6,6 +6,14 @@
 	<meta name="description" content="Social media issues and their negitive impacts on teen mental health.">
 	<title>Social Media Issues</title>
 	<link rel="shortcut icon" href="/assets/images/favicon.png" type="image/png">
+	<!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-VGNYVRQCV1"></script>
+    <script>
+     window.dataLayer = window.dataLayer || [];
+     function gtag(){dataLayer.push(arguments);}
+     gtag('js', new Date());
+     gtag('config', 'G-VGNYVRQCV1');
+</script>
 	<style>
 		body {
 			background-color: #202020;
@@ -199,30 +207,19 @@
             background-color: white;
         }
 
-        .close-button::before {
-         	content: "&times";
-  			position: absolute;
-  			top: 0;
-  			left: 0;
-  			width: 100%;
-  			height: 100%;
-  			font-size: 40px;
-  			line-height: 1;
-  			text-align: center;
- 			color: white;
-			}
+		.close-button {
+            position: absolute;
+            top: 6px;
+            left: 20px;
+            cursor: pointer;
+            font-size: 40px;
+            color: white;
+            z-index: 3;
+        }
 
-.close-button {
-  position: absolute;
-  top: 6px;
-  left: 20px;
-  cursor: pointer;
-  z-index: 3;
-}
-
-.close-button:hover::before {
-  color: #cccccc;
-}
+		.close-button:hover {
+            color: #cccccc;
+        }
 
         
 	</style>
