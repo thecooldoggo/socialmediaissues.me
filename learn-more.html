@@ -26,9 +26,11 @@
 		.button-container {
 			opacity: 0;
 			animation: fadeIn 1s ease-in-out forwards;
-			position: relative;
+			display: flex;
+            flex-direction: column;
+            align-items: center;
 			z-index: 1;
-			padding-top: 85px;
+			padding-top: 75px;
 		}
 
 		.button-container .button {
@@ -41,6 +43,7 @@
 			text-decoration: none;
 			outline: 2px solid #202020;
 			transition: all 0.2s ease;
+			margin-top: 12px;
 		}
 
 		.button-container .button:hover {
